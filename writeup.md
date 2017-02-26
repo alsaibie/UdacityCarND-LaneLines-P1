@@ -1,6 +1,6 @@
-#**Finding Lane Lines on the Road** 
+# **Finding Lane Lines on the Road**
 
-##This is the writeup for the first project of the Self Driving Nanodegree Term1 Course: Computer Vision and Deep Learning
+## This is the writeup for the first project of the Self Driving Nanodegree Term1 Course: Computer Vision and Deep Learning
 
 ---
 
@@ -31,35 +31,36 @@ The goals / steps of this project are the following:
 
 ### Reflection
 
-###1. Describe your pipeline. As part of the description, explain how you modified the draw_lines() function.
+### 1. Describe your pipeline. As part of the description, explain how you modified the draw_lines() function.
 
-My pipeline consists of 7 steps. First I import the image and convert it to grayscale. Then I apply a gaussian smoothing filter. Then detect edges using a canny edge detector. I then create a mask for the area of interest where the highway lines are likely to reside. I perform a hough transform to detect the lines within the masked area and then output (draw) the lines on the original image. 
+My pipeline consists of 7 steps. First I import the image and convert it to grayscale. Then I apply a Gaussian smoothing filter. Then detect edges using a canny edge detector. I then create a mask for the area of interest where the highway lines are likely to reside. I perform a hough transform to detect the lines within the masked area and then output (draw) the lines on the original image.
 
-The pipeline is tested on the given 6 test images. The test images are shown alongside the images with the lines annotated. 
-<img src="./test_images/solidWhiteCurve.jpg" width="425"/> <img src="image2.png" width="425"/> 
+The pipeline is tested on the given 6 test images. The test images are shown alongside the images with the lines annotated.
+<img src="./test_images/solidWhiteCurve.jpg" width="300"/> <img src="./test_images/out/solidWhiteCurve.jpg" width="300"/> <img src="./test_images/out2/solidWhiteCurve.jpg" width="300"/>
 
+<img src="./test_images/solidWhiteRight.jpg" width="300"/> <img src="./test_images/out/solidWhiteRight.jpg" width="300"/> <img src="./test_images/out2/solidWhiteRight.jpg" width="300"/>
 
-| ![alt text][image2] | ![alt text][image8] |
+<img src="./test_images/solidYellowCurve.jpg" width="300"/> <img src="./test_images/out/solidYellowCurve.jpg" width="300"/> <img src="./test_images/out2/solidYellowCurve.jpg" width="300"/>
 
-My pipeline consisted of 5 steps. First, I converted the images to grayscale, then I .... 
+<img src="./test_images/solidYellowCurve2.jpg" width="300"/> <img src="./test_images/out/solidYellowCurve2.jpg" width="300"/> <img src="./test_images/out2/solidYellowCurve2.jpg" width="300"/>
 
-In order to draw a single line on the left and right lanes, I modified the draw_lines() function by ...
+<img src="./test_images/solidYellowLeft.jpg" width="300"/> <img src="./test_images/out/solidYellowLeft.jpg" width="300"/> <img src="./test_images/out2/solidYellowLeft.jpg" width="300"/>
 
-If you'd like to include images to show how the pipeline works, here is how to include an image: 
+<img src="./test_images/whiteCarLaneSwitch.jpg" width="300"/> <img src="./test_images/out/whiteCarLaneSwitch.jpg" width="300"/> <img src="./test_images/out2/whiteCarLaneSwitch.jpg" width="300"/>
 
-![alt text][image1]
+---
 
-
-###2. Identify potential shortcomings with your current pipeline
-
-
-One potential shortcoming would be what would happen when ... 
-
-Another shortcoming could be ...
+To draw an extrapolated line in place of the separate line segments, I modified the draw_lines() function to compute the slope of each line segment and separate the lines into two groups, depending on the slope sign, I then take the median of the slope values for each side, extrapolate to find the furthest bottom points using the median slope, then extrapolate again from that point to a fixed vertical height to determine and draw the final left and right lines on the image.
 
 
-###3. Suggest possible improvements to your pipeline
+### 2. Identify potential shortcomings with your current pipeline
 
-A possible improvement would be to ...
+There are a number of shortcomings with this simple method.
+* It would not work well in areas where lines are blurred, erased or nonexistent obviously.
+* It disregards knowledge from previous frames, that would otherwise make it robust against outliers.
+* A straight line is not suitable for curved roads, an interpolated curve of small line segments would result in a better fit.
 
-Another potential improvement could be to ...
+
+### 3. Suggest possible improvements to your pipeline
+
+A better line fit can be done using a spline interpolation method on finer line segments, this will make it robust to bends and curves on the road. The information gained from previous image frames should not be discarded, but used with a model and perhaps a Bayesian filter, which is what we will probably get to do later in the course I'm sure. The information from vehicles driving ahead could be used to estimate the parameters of the highway path too.
