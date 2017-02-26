@@ -36,7 +36,7 @@ The goals / steps of this project are the following:
 My pipeline consists of 7 steps. First I import the image and convert it to grayscale. Then I apply a gaussian smoothing filter. Then detect edges using a canny edge detector. I then create a mask for the area of interest where the highway lines are likely to reside. I perform a hough transform to detect the lines within the masked area and then output (draw) the lines on the original image. 
 
 The pipeline is tested on the given 6 test images. The test images are shown alongside the images with the lines annotated. 
-<img src="image8" width="425"/> <img src="image2.png" width="425"/> 
+<img src="./test_images/solidWhiteCurve.jpg" width="425"/> <img src="image2.png" width="425"/> 
 
 
 | ![alt text][image2] | ![alt text][image8] |
