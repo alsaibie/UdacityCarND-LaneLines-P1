@@ -36,17 +36,17 @@ The goals / steps of this project are the following:
 My pipeline consists of 7 steps. First I import the image and convert it to grayscale. Then I apply a Gaussian smoothing filter. Then detect edges using a canny edge detector. I then create a mask for the area of interest where the highway lines are likely to reside. I perform a hough transform to detect the lines within the masked area and then output (draw) the lines on the original image.
 
 The pipeline is tested on the given 6 test images. The test images are shown alongside the images with the lines annotated.
-<img src="./test_images/solidWhiteCurve.jpg" width="300"/> <img src="./test_images/out/solidWhiteCurve.jpg" width="300"/> <img src="./test_images/out2/solidWhiteCurve.jpg" width="300"/>
+<img src="./test_images/solidWhiteCurve.jpg" width="250"/> <img src="./test_images/out/solidWhiteCurve.jpg" width="250"/> <img src="./test_images/out2/solidWhiteCurve.jpg" width="250"/>
 
-<img src="./test_images/solidWhiteRight.jpg" width="300"/> <img src="./test_images/out/solidWhiteRight.jpg" width="300"/> <img src="./test_images/out2/solidWhiteRight.jpg" width="300"/>
+<img src="./test_images/solidWhiteRight.jpg" width="250"/> <img src="./test_images/out/solidWhiteRight.jpg" width="250"/> <img src="./test_images/out2/solidWhiteRight.jpg" width="250"/>
 
-<img src="./test_images/solidYellowCurve.jpg" width="300"/> <img src="./test_images/out/solidYellowCurve.jpg" width="300"/> <img src="./test_images/out2/solidYellowCurve.jpg" width="300"/>
+<img src="./test_images/solidYellowCurve.jpg" width="250"/> <img src="./test_images/out/solidYellowCurve.jpg" width="250"/> <img src="./test_images/out2/solidYellowCurve.jpg" width="250"/>
 
-<img src="./test_images/solidYellowCurve2.jpg" width="300"/> <img src="./test_images/out/solidYellowCurve2.jpg" width="300"/> <img src="./test_images/out2/solidYellowCurve2.jpg" width="300"/>
+<img src="./test_images/solidYellowCurve2.jpg" width="250"/> <img src="./test_images/out/solidYellowCurve2.jpg" width="250"/> <img src="./test_images/out2/solidYellowCurve2.jpg" width="250"/>
 
-<img src="./test_images/solidYellowLeft.jpg" width="300"/> <img src="./test_images/out/solidYellowLeft.jpg" width="300"/> <img src="./test_images/out2/solidYellowLeft.jpg" width="300"/>
+<img src="./test_images/solidYellowLeft.jpg" width="250"/> <img src="./test_images/out/solidYellowLeft.jpg" width="250"/> <img src="./test_images/out2/solidYellowLeft.jpg" width="250"/>
 
-<img src="./test_images/whiteCarLaneSwitch.jpg" width="300"/> <img src="./test_images/out/whiteCarLaneSwitch.jpg" width="300"/> <img src="./test_images/out2/whiteCarLaneSwitch.jpg" width="300"/>
+<img src="./test_images/whiteCarLaneSwitch.jpg" width="250"/> <img src="./test_images/out/whiteCarLaneSwitch.jpg" width="250"/> <img src="./test_images/out2/whiteCarLaneSwitch.jpg" width="250"/>
 
 ---
 
